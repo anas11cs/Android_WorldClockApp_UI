@@ -1,7 +1,6 @@
 package com.anasdroid.worldclockapp;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,9 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.ViewHolder> {
 
     View view;
     Context context;
-    ArrayList<Country> arrayList;
+    ArrayList<country> arrayList;
     dataListener DataListener;
-    ArrayList<Country> arrayListSelected = new ArrayList<>();
+    ArrayList<country> arrayListSelected = new ArrayList<>();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,7 +31,7 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.ViewHolder> {
         }
     }
 
-    public dataAdapter(Context context, ArrayList<Country> arrayList, dataListener DataListener) {
+    public dataAdapter(Context context, ArrayList<country> arrayList, dataListener DataListener) {
         this.context = context;
         this.arrayList = arrayList;
         this.DataListener = DataListener;

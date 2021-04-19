@@ -1,12 +1,10 @@
 package com.anasdroid.worldclockapp;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +12,9 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements dataListener{
 
     RecyclerView availableCountriesRecyclerView;
     dataAdapter adapter;
+    ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,15 @@ public class MainActivity extends AppCompatActivity implements dataListener{
 
         availableCountriesRecyclerView = findViewById(R.id.availableCountriesRecyclerView);
         set_AvailableCountries_RecyclerView();
+        // Back Button in Main Activity
+        backButton= (ImageView) findViewById(R.id.showCountries);
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                clockActivityInit();
+            }
+        });
+
 /*        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,32 +53,37 @@ public class MainActivity extends AppCompatActivity implements dataListener{
         });*/
     }
 
-    private ArrayList<Country> getData(){
-        ArrayList<Country> dataList = new ArrayList<>();
-        dataList.add(new Country("Germany","11:01 PM"));
-        dataList.add(new Country("France","11:01 PM"));
-        dataList.add(new Country("America","11:01 PM"));
-        dataList.add(new Country("Afghanistan","11:01 PM"));
-        dataList.add(new Country("Algeria","11:01 PM"));
-        dataList.add(new Country("Andorra","11:01 PM"));
-        dataList.add(new Country("Austria","11:01 PM"));
-        dataList.add(new Country("Austrian Empire","11:01 PM"));
-        dataList.add(new Country("Azerbaijan","11:01 PM"));
-        dataList.add(new Country("Bahrain","11:01 PM"));
-        dataList.add(new Country("Bangladesh","11:01 PM"));
-        dataList.add(new Country("Belarus","11:01 PM"));
-        dataList.add(new Country("Belgium","11:01 PM"));
-        dataList.add(new Country("Bolivia","11:01 PM"));
-        dataList.add(new Country("Brazil","11:01 PM"));
-        dataList.add(new Country("Bulgaria","11:01 PM"));
-        dataList.add(new Country("Burma","11:01 PM"));
-        dataList.add(new Country("Burundi","11:01 PM"));
-        dataList.add(new Country("Madagascar","11:01 PM"));
-        dataList.add(new Country("Malawi","11:01 PM"));
-        dataList.add(new Country("Maldives","11:01 PM"));
-        dataList.add(new Country("Mali","11:01 PM"));
-        dataList.add(new Country("Malta","11:01 PM"));
-        dataList.add(new Country("Austrian Marshall Islands","11:01 PM"));
+    public void clockActivityInit(){
+        Intent intent = new Intent(this, ClockActivity.class);
+        startActivity(intent);
+    }
+
+    private ArrayList<country> getData(){
+        ArrayList<country> dataList = new ArrayList<>();
+        dataList.add(new country("Germany","11:01 PM"));
+        dataList.add(new country("France","11:01 PM"));
+        dataList.add(new country("America","11:01 PM"));
+        dataList.add(new country("Afghanistan","11:01 PM"));
+        dataList.add(new country("Algeria","11:01 PM"));
+        dataList.add(new country("Andorra","11:01 PM"));
+        dataList.add(new country("Austria","11:01 PM"));
+        dataList.add(new country("Austrian Empire","11:01 PM"));
+        dataList.add(new country("Azerbaijan","11:01 PM"));
+        dataList.add(new country("Bahrain","11:01 PM"));
+        dataList.add(new country("Bangladesh","11:01 PM"));
+        dataList.add(new country("Belarus","11:01 PM"));
+        dataList.add(new country("Belgium","11:01 PM"));
+        dataList.add(new country("Bolivia","11:01 PM"));
+        dataList.add(new country("Brazil","11:01 PM"));
+        dataList.add(new country("Bulgaria","11:01 PM"));
+        dataList.add(new country("Burma","11:01 PM"));
+        dataList.add(new country("Burundi","11:01 PM"));
+        dataList.add(new country("Madagascar","11:01 PM"));
+        dataList.add(new country("Malawi","11:01 PM"));
+        dataList.add(new country("Maldives","11:01 PM"));
+        dataList.add(new country("Mali","11:01 PM"));
+        dataList.add(new country("Malta","11:01 PM"));
+        dataList.add(new country("Austrian Marshall Islands","11:01 PM"));
         return dataList;
     }
 

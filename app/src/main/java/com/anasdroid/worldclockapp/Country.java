@@ -4,11 +4,11 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Country {
+public class country {
     String CountryName;
     String Time;
 
-    public Country(String countryName, String time) {
+    public country(String countryName, String time) {
         CountryName = countryName;
         Time = time;
     }
