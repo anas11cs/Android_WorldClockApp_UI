@@ -1,17 +1,55 @@
 package com.anasdroid.worldclockapp;
 
+import android.opengl.Visibility;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class country {
+public class country implements Parcelable {
     String CountryName;
     String Time;
+    boolean VisibilityCountry;
 
-    public country(String countryName, String time) {
+    public country(String countryName, String time, boolean visibilityCountry) {
         CountryName = countryName;
         Time = time;
+        VisibilityCountry=visibilityCountry;
     }
+    // Parcelable CODE BELOW ===============================
+    protected country(Parcel in) {
+        CountryName = in.readString();
+        Time = in.readString();
+        VisibilityCountry = in.readByte() != 0;
+    }
+
+    public static final Creator<country> CREATOR = new Creator<country>() {
+        @Override
+        public country createFromParcel(Parcel in) {
+            return new country(in);
+        }
+
+        @Override
+        public country[] newArray(int size) {
+            return new country[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(CountryName);
+        dest.writeString(Time);
+        dest.writeByte((byte) (VisibilityCountry ? 1 : 0));
+    }
+    // https://www.journaldev.com/17899/java-simpledateformat-java-date-format#java-date-time-format-example
+    // https://www.javatpoint.com/post/java-locale-getlanguage-method
 /*    String
     // ============================================ get All Countries
 

@@ -18,7 +18,11 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.ViewHolder> {
     Context context;
     ArrayList<country> arrayList;
     dataListener DataListener;
-    ArrayList<country> arrayListSelected = new ArrayList<>();
+
+    public ArrayList<country> getFreshData() {
+        return this.arrayList;
+    }
+//    ArrayList<country> arrayListSelected = new ArrayList<>();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,6 +56,9 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(arrayList!=null && arrayList.size()>0){
+            if(arrayList.get(position).VisibilityCountry==true){
+                holder.checkbox.setChecked(true);
+            }
             holder.checkbox.setText(arrayList.get(position).CountryName);
             holder.timetxt.setText(arrayList.get(position).Time);
             holder.checkbox.setOnClickListener(new View.OnClickListener(){
@@ -59,12 +66,14 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     if(holder.checkbox.isChecked()){
-                        arrayListSelected.add(arrayList.get(position));
+                        arrayList.get(position).VisibilityCountry=true;
+                        //arrayListSelected.add(arrayList.get(position));
                         DataListener.onDataChange(true);
                     }
                     else
                     {
-                        arrayListSelected.remove(arrayList.get(position));
+                        arrayList.get(position).VisibilityCountry=false;
+                        //arrayListSelected.remove(arrayList.get(position));
                         DataListener.onDataChange(false);
                     }
 
