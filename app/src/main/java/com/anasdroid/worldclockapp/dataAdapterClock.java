@@ -38,7 +38,7 @@ public class dataAdapterClock extends RecyclerView.Adapter<dataAdapterClock.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(arrayL!=null && arrayL.size()>0){
             if(arrayL.get(position).VisibilityCountry){
-                System.out.println(arrayL.get(position).CountryName);
+                //System.out.println(arrayL.get(position).CountryName);
                 holder.countrytxt.setText(arrayL.get(position).CountryName);
                 holder.timetxt.setText(arrayL.get(position).Time);
             }

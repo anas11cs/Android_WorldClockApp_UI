@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.Button;
@@ -25,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements dataListener{
 
     RecyclerView availableCountriesRecyclerView;
     dataAdapter adapter;
-    ImageView backButton;
-
+    ImageView backButton, powerOff;
+    ArrayList<country> originalData;
     /* IDEA OF SHIFTING DATA BETWEEN THE APP ACTIVITIES*/
     // MainActivity sends data List to new activity(ClockActivity)
     // And ClockActivity sends data to new activity(MainActivity)
@@ -36,6 +39,27 @@ public class MainActivity extends AppCompatActivity implements dataListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         availableCountriesRecyclerView = findViewById(R.id.availableCountriesRecyclerView);
+        //EditText editText= findViewById(R.id.edit_text);
+/*        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                System.out.println(s);
+                if(s.length()!=0)
+                    filter(s.toString());
+                else
+                    filter(null);
+            }
+        });*/
 /*        if (savedInstanceState == null) {
             System.out.println("OnCreate:If");
             // This is the case when you are opening this Activity for the for the first time
@@ -55,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements dataListener{
             set_AvailableCountries_RecyclerView(null);
         } else {
             // Restore value of members from saved state
-            //.out.println("OnCreate:Else");
+            //System.out.println("OnCreate:Else");
             set_AvailableCountries_RecyclerView(bundle.getParcelableArrayList("freshDataList"));
         }
         // Back Button in Main Activity
@@ -64,6 +88,14 @@ public class MainActivity extends AppCompatActivity implements dataListener{
             @Override
             public void onClick(View v) {
                 clockActivityInit();
+            }
+        });
+        powerOff = (ImageView) findViewById(R.id.power_off);
+        powerOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
             }
         });
 
@@ -79,6 +111,25 @@ public class MainActivity extends AppCompatActivity implements dataListener{
             }
         });*/
     } // On Create Ends Here!
+
+    // BELOW IS THE FUNCTION FOR FILTER ===== NOT SUCCESS =====
+
+/*    private void filter(String text){
+        if(text==null){
+            set_AvailableCountries_RecyclerView(this.originalData);
+        }
+        else {
+            ArrayList<country> filteredList = new ArrayList<>();
+            for (country item : this.adapter.getFreshData()) {
+                if (item.CountryName.toLowerCase().contains(text.toLowerCase())) {
+                    filteredList.add(item);
+                }
+            }
+            this.originalData=this.adapter.getFreshData();
+            if(!filteredList.isEmpty())
+            set_AvailableCountries_RecyclerView(filteredList);
+        }
+    }*/
 /*    @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         System.out.println("In:onSaveInstanceState");
