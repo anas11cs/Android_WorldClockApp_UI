@@ -43,8 +43,9 @@
             android:src="@drawable/ic_edit"
             app:tint="@color/colorTextIcons"/>
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/availableCountriesRecyclerView"
+        android:id="@+id/selectedCountriesRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -52,7 +53,10 @@
         android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/bottomLinear"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader"/>
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
     <LinearLayout
         android:id="@+id/bottomLinear"
         android:layout_width="match_parent"

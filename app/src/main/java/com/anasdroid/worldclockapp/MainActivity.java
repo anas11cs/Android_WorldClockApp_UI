@@ -50,14 +50,13 @@ public class MainActivity extends AppCompatActivity implements dataListener{
         Bundle bundle = getIntent().getExtras();
         //ArrayList<country> arrayList = bundle.getParcelableArrayList("freshDataList");
         if ( bundle == null) {
-            System.out.println("OnCreate:If");
+            //System.out.println("OnCreate:If");
             // This is the case when you are opening this Activity for the for the first time
             set_AvailableCountries_RecyclerView(null);
         } else {
             // Restore value of members from saved state
-            System.out.println("OnCreate:Else");
+            //.out.println("OnCreate:Else");
             set_AvailableCountries_RecyclerView(bundle.getParcelableArrayList("freshDataList"));
-
         }
         // Back Button in Main Activity
         backButton= (ImageView) findViewById(R.id.showCountries);
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements dataListener{
         Intent intent = new Intent(this, ClockActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("freshDataList", getFreshDataForNewActivity());
-        System.out.println("In: clockActivityInit");
+        //System.out.println("In: clockActivityInit");
         intent.putExtras(bundle);
         this.startActivity(intent);
         finish();

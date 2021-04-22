@@ -13,12 +13,18 @@ public class country implements Parcelable {
     String Time;
     boolean VisibilityCountry;
 
+    public country(country c){
+        this.CountryName=c.CountryName;
+        this.Time=c.Time;
+        this.VisibilityCountry=c.VisibilityCountry;
+    }
+
     public country(String countryName, String time, boolean visibilityCountry) {
         CountryName = countryName;
         Time = time;
         VisibilityCountry=visibilityCountry;
     }
-    // Parcelable CODE BELOW ===============================
+    // Parcelable Country Below
     protected country(Parcel in) {
         CountryName = in.readString();
         Time = in.readString();
